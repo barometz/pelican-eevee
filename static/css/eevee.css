@@ -300,6 +300,18 @@ div.eevee-page-spacer {
   padding-left: 3px;
 }
 
+.eevee-translations {
+  margin-left: 1em;
+}
+
+.eevee-translations > a {
+  text-decoration: none;
+}
+
+a[hreflang]:after {
+  content: "\0000a0[" attr(hreflang) "]";
+}
+
 .eevee-toc, .eevee-archive {
   display: table-cell;
 }

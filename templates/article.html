@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 {% block title %}{{ article.title }}{% endblock %}
+{% block extra_meta %}
+    {% import 'partials/_translations.html' as translations with context %}
+    {% if translations.entry_hreflang(article) %}
+        {{ translations.entry_hreflang(article) }}
+    {% endif %}
+{% endblock %}
 {% block content %}
     <article itemscope itemtype="http://schema.org/BlogPosting">
         {% include 'partials/structured_data.html' %}
@@ -10,6 +16,8 @@
                       itemprop="datePublished">
                     {{ article.locale_date }}
                 </time>
+                {% import 'partials/_translations.html' as translations with context %}
+                <div class="eevee-translations">{{ translations.translations_for(article) }}</div>
             </div>
             <h1 itemprop="name">
                 <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
